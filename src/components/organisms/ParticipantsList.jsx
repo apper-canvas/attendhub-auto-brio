@@ -110,8 +110,11 @@ const ParticipantsList = () => {
                   <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Status Summary
                   </th>
-                  <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+<th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Total Sessions
+                  </th>
+                  <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Actions
                   </th>
                 </tr>
               </thead>

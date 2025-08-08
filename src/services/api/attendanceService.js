@@ -93,9 +93,18 @@ class AttendanceService {
     
     stats.attendanceRate = stats.totalSessions > 0 ? Math.round((stats.presentCount / stats.totalSessions) * 100) : 0
     
-    return stats
+return stats
   }
 
+  async getParticipantAttendanceHistory(participantId) {
+    await new Promise(resolve => setTimeout(resolve, 250))
+    const participantRecords = this.attendance.filter(record => record.participantId === participantId)
+    
+    // Sort by timestamp (most recent first)
+    return participantRecords
+      .map(record => ({ ...record }))
+      .sort((a, b) => new Date(b.timestamp || b.date || 0) - new Date(a.timestamp || a.date || 0))
+  }
   async create(attendanceData) {
     await new Promise(resolve => setTimeout(resolve, 400))
     const newRecord = {
