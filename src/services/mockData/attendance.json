@@ -1,0 +1,234 @@
+[
+  {
+    "Id": 1,
+    "sessionId": 1,
+    "participantId": 1,
+    "status": "present",
+    "timestamp": "2024-01-15T09:00:00Z",
+    "notes": ""
+  },
+  {
+    "Id": 2,
+    "sessionId": 1,
+    "participantId": 2,
+    "status": "present",
+    "timestamp": "2024-01-15T09:00:00Z",
+    "notes": ""
+  },
+  {
+    "Id": 3,
+    "sessionId": 1,
+    "participantId": 3,
+    "status": "absent",
+    "timestamp": "2024-01-15T09:00:00Z",
+    "notes": "Sick"
+  },
+  {
+    "Id": 4,
+    "sessionId": 1,
+    "participantId": 4,
+    "status": "present",
+    "timestamp": "2024-01-15T09:00:00Z",
+    "notes": ""
+  },
+  {
+    "Id": 5,
+    "sessionId": 1,
+    "participantId": 5,
+    "status": "late",
+    "timestamp": "2024-01-15T09:15:00Z",
+    "notes": "Traffic"
+  },
+  {
+    "Id": 6,
+    "sessionId": 1,
+    "participantId": 6,
+    "status": "present",
+    "timestamp": "2024-01-15T09:00:00Z",
+    "notes": ""
+  },
+  {
+    "Id": 7,
+    "sessionId": 1,
+    "participantId": 7,
+    "status": "present",
+    "timestamp": "2024-01-15T09:00:00Z",
+    "notes": ""
+  },
+  {
+    "Id": 8,
+    "sessionId": 1,
+    "participantId": 8,
+    "status": "present",
+    "timestamp": "2024-01-15T09:00:00Z",
+    "notes": ""
+  },
+  {
+    "Id": 9,
+    "sessionId": 1,
+    "participantId": 9,
+    "status": "absent",
+    "timestamp": "2024-01-15T09:00:00Z",
+    "notes": ""
+  },
+  {
+    "Id": 10,
+    "sessionId": 1,
+    "participantId": 10,
+    "status": "present",
+    "timestamp": "2024-01-15T09:00:00Z",
+    "notes": ""
+  },
+  {
+    "Id": 11,
+    "sessionId": 2,
+    "participantId": 11,
+    "status": "present",
+    "timestamp": "2024-01-16T10:00:00Z",
+    "notes": ""
+  },
+  {
+    "Id": 12,
+    "sessionId": 2,
+    "participantId": 12,
+    "status": "present",
+    "timestamp": "2024-01-16T10:00:00Z",
+    "notes": ""
+  },
+  {
+    "Id": 13,
+    "sessionId": 2,
+    "participantId": 13,
+    "status": "present",
+    "timestamp": "2024-01-16T10:00:00Z",
+    "notes": ""
+  },
+  {
+    "Id": 14,
+    "sessionId": 2,
+    "participantId": 14,
+    "status": "late",
+    "timestamp": "2024-01-16T10:10:00Z",
+    "notes": "Meeting ran over"
+  },
+  {
+    "Id": 15,
+    "sessionId": 2,
+    "participantId": 15,
+    "status": "present",
+    "timestamp": "2024-01-16T10:00:00Z",
+    "notes": ""
+  },
+  {
+    "Id": 16,
+    "sessionId": 2,
+    "participantId": 16,
+    "status": "excused",
+    "timestamp": "2024-01-16T10:00:00Z",
+    "notes": "Client meeting"
+  },
+  {
+    "Id": 17,
+    "sessionId": 2,
+    "participantId": 17,
+    "status": "present",
+    "timestamp": "2024-01-16T10:00:00Z",
+    "notes": ""
+  },
+  {
+    "Id": 18,
+    "sessionId": 2,
+    "participantId": 18,
+    "status": "present",
+    "timestamp": "2024-01-16T10:00:00Z",
+    "notes": ""
+  },
+  {
+    "Id": 19,
+    "sessionId": 3,
+    "participantId": 1,
+    "status": "present",
+    "timestamp": "2024-01-16T14:00:00Z",
+    "notes": ""
+  },
+  {
+    "Id": 20,
+    "sessionId": 3,
+    "participantId": 3,
+    "status": "absent",
+    "timestamp": "2024-01-16T14:00:00Z",
+    "notes": "Still sick"
+  },
+  {
+    "Id": 21,
+    "sessionId": 3,
+    "participantId": 5,
+    "status": "present",
+    "timestamp": "2024-01-16T14:00:00Z",
+    "notes": ""
+  },
+  {
+    "Id": 22,
+    "sessionId": 3,
+    "participantId": 7,
+    "status": "present",
+    "timestamp": "2024-01-16T14:00:00Z",
+    "notes": ""
+  },
+  {
+    "Id": 23,
+    "sessionId": 3,
+    "participantId": 9,
+    "status": "present",
+    "timestamp": "2024-01-16T14:00:00Z",
+    "notes": ""
+  },
+  {
+    "Id": 24,
+    "sessionId": 3,
+    "participantId": 11,
+    "status": "present",
+    "timestamp": "2024-01-16T14:00:00Z",
+    "notes": ""
+  },
+  {
+    "Id": 25,
+    "sessionId": 3,
+    "participantId": 13,
+    "status": "late",
+    "timestamp": "2024-01-16T14:20:00Z",
+    "notes": ""
+  },
+  {
+    "Id": 26,
+    "sessionId": 3,
+    "participantId": 15,
+    "status": "present",
+    "timestamp": "2024-01-16T14:00:00Z",
+    "notes": ""
+  },
+  {
+    "Id": 27,
+    "sessionId": 3,
+    "participantId": 17,
+    "status": "present",
+    "timestamp": "2024-01-16T14:00:00Z",
+    "notes": ""
+  },
+  {
+    "Id": 28,
+    "sessionId": 3,
+    "participantId": 19,
+    "status": "present",
+    "timestamp": "2024-01-16T14:00:00Z",
+    "notes": ""
+  },
+  {
+    "Id": 29,
+    "sessionId": 3,
+    "participantId": 20,
+    "status": "absent",
+    "timestamp": "2024-01-16T14:00:00Z",
+    "notes": "Family emergency"
+  }
+]

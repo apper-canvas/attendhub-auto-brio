@@ -1,0 +1,122 @@
+[
+  {
+    "Id": 1,
+    "name": "Alice Johnson",
+    "email": "alice.johnson@school.edu",
+    "department": "Grade 10"
+  },
+  {
+    "Id": 2,
+    "name": "Bob Smith",
+    "email": "bob.smith@school.edu",
+    "department": "Grade 10"
+  },
+  {
+    "Id": 3,
+    "name": "Carol Davis",
+    "email": "carol.davis@school.edu",
+    "department": "Grade 11"
+  },
+  {
+    "Id": 4,
+    "name": "David Wilson",
+    "email": "david.wilson@school.edu",
+    "department": "Grade 10"
+  },
+  {
+    "Id": 5,
+    "name": "Emma Thompson",
+    "email": "emma.thompson@school.edu",
+    "department": "Grade 11"
+  },
+  {
+    "Id": 6,
+    "name": "Frank Brown",
+    "email": "frank.brown@school.edu",
+    "department": "Grade 10"
+  },
+  {
+    "Id": 7,
+    "name": "Grace Lee",
+    "email": "grace.lee@school.edu",
+    "department": "Grade 11"
+  },
+  {
+    "Id": 8,
+    "name": "Henry Garcia",
+    "email": "henry.garcia@school.edu",
+    "department": "Grade 10"
+  },
+  {
+    "Id": 9,
+    "name": "Isabella Rodriguez",
+    "email": "isabella.rodriguez@school.edu",
+    "department": "Grade 11"
+  },
+  {
+    "Id": 10,
+    "name": "Jack Martinez",
+    "email": "jack.martinez@school.edu",
+    "department": "Grade 10"
+  },
+  {
+    "Id": 11,
+    "name": "Sarah Connor",
+    "email": "sarah.connor@company.com",
+    "department": "Engineering"
+  },
+  {
+    "Id": 12,
+    "name": "John Anderson",
+    "email": "john.anderson@company.com",
+    "department": "Product"
+  },
+  {
+    "Id": 13,
+    "name": "Lisa Chen",
+    "email": "lisa.chen@company.com",
+    "department": "Design"
+  },
+  {
+    "Id": 14,
+    "name": "Mike Johnson",
+    "email": "mike.johnson@company.com",
+    "department": "Engineering"
+  },
+  {
+    "Id": 15,
+    "name": "Anna Williams",
+    "email": "anna.williams@company.com",
+    "department": "Marketing"
+  },
+  {
+    "Id": 16,
+    "name": "Chris Taylor",
+    "email": "chris.taylor@company.com",
+    "department": "Sales"
+  },
+  {
+    "Id": 17,
+    "name": "Maria Lopez",
+    "email": "maria.lopez@company.com",
+    "department": "HR"
+  },
+  {
+    "Id": 18,
+    "name": "James Wilson",
+    "email": "james.wilson@company.com",
+    "department": "Finance"
+  },
+  {
+    "Id": 19,
+    "name": "Rachel Green",
+    "email": "rachel.green@company.com",
+    "department": "Operations"
+  },
+  {
+    "Id": 20,
+    "name": "Tom Harris",
+    "email": "tom.harris@company.com",
+    "department": "Engineering"
+  }
+]
