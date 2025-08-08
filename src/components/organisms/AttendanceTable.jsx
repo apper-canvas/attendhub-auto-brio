@@ -23,7 +23,7 @@ const AttendanceTable = () => {
   const [searchTerm, setSearchTerm] = useState("")
   const [filterStatus, setFilterStatus] = useState("all")
 
-  const loadData = async () => {
+const loadData = async () => {
     try {
       setLoading(true)
       setError("")
@@ -35,14 +35,24 @@ const AttendanceTable = () => {
       ])
 
       setSession(sessionData)
+      
+      // Handle participant IDs from database field
+      const sessionParticipantIds = sessionData.participant_ids_c || sessionData.participantIds || []
+      const participantIdsArray = Array.isArray(sessionParticipantIds) ? 
+        sessionParticipantIds : 
+        typeof sessionParticipantIds === 'string' ? 
+          sessionParticipantIds.split(',').map(id => parseInt(id.trim())) : []
+      
       setParticipants(participantsData.filter(p => 
-        sessionData.participantIds.includes(p.Id)
+        participantIdsArray.includes(p.Id)
       ))
 
       // Convert attendance array to lookup object
       const attendanceMap = {}
       attendanceData.forEach(record => {
-        attendanceMap[record.participantId] = record.status
+        const participantId = record.participant_id_c?.Id || record.participant_id_c || record.participantId
+        const status = record.status_c || record.status
+        attendanceMap[participantId] = status
       })
       setAttendance(attendanceMap)
     } catch (err) {

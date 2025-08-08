@@ -52,11 +52,18 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Quick Actions */}
+{/* Quick Actions */}
           <div className="hidden md:flex items-center space-x-4">
             <Button variant="primary" size="sm">
               <ApperIcon name="Plus" size={16} className="mr-1" />
               New Session
+            </Button>
+            <Button variant="outline" size="sm" onClick={() => {
+              const { ApperUI } = window.ApperSDK
+              ApperUI.logout()
+            }}>
+              <ApperIcon name="LogOut" size={16} className="mr-1" />
+              Logout
             </Button>
           </div>
 

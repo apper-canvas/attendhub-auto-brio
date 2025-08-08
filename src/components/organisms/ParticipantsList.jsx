@@ -18,7 +18,7 @@ const ParticipantsList = () => {
   const [filterDepartment, setFilterDepartment] = useState("all")
   const [participantStats, setParticipantStats] = useState({})
 
-  const loadData = async () => {
+const loadData = async () => {
     try {
       setLoading(true)
       setError("")

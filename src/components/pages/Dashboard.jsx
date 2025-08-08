@@ -22,7 +22,7 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState("")
 
-  const loadDashboardData = async () => {
+const loadDashboardData = async () => {
     try {
       setLoading(true)
       setError("")
@@ -35,25 +35,25 @@ const Dashboard = () => {
 
       // Filter today's sessions
       const todaySessions = sessionsData.filter(session => 
-        isToday(new Date(session.date))
+        isToday(new Date(session.date_c || session.date))
       )
 
       // Get recent sessions (last 7 days)
       const recentSessions = sessionsData
         .filter(session => {
-          const sessionDate = new Date(session.date)
+          const sessionDate = new Date(session.date_c || session.date)
           const weekAgo = new Date()
           weekAgo.setDate(weekAgo.getDate() - 7)
           return sessionDate >= weekAgo
         })
-        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .sort((a, b) => new Date(b.date_c || b.date) - new Date(a.date_c || a.date))
         .slice(0, 6)
 
       // Calculate overall stats
       const totalSessions = sessionsData.length
       const totalParticipants = participantsData.length
       const totalAttendanceRecords = attendanceData.length
-      const presentRecords = attendanceData.filter(record => record.status === "present").length
+      const presentRecords = attendanceData.filter(record => (record.status_c || record.status) === "present").length
       const overallAttendanceRate = totalAttendanceRecords > 0 
         ? Math.round((presentRecords / totalAttendanceRecords) * 100) 
         : 0
@@ -61,11 +61,15 @@ const Dashboard = () => {
       // Calculate attendance stats for each session
       const attendanceStats = {}
       for (const session of [...todaySessions, ...recentSessions]) {
-        const sessionAttendance = attendanceData.filter(record => record.sessionId === session.Id)
-        const sessionParticipants = session.participantIds?.length || 0
-        const presentCount = sessionAttendance.filter(record => record.status === "present").length
-        const absentCount = sessionAttendance.filter(record => record.status === "absent").length
-        const lateCount = sessionAttendance.filter(record => record.status === "late").length
+        const sessionAttendance = attendanceData.filter(record => 
+          (record.session_id_c?.Id || record.session_id_c || record.sessionId) === session.Id
+        )
+        const sessionParticipantIds = session.participant_ids_c || session.participantIds || []
+        const sessionParticipants = Array.isArray(sessionParticipantIds) ? sessionParticipantIds.length : 
+                                  typeof sessionParticipantIds === 'string' ? sessionParticipantIds.split(',').length : 0
+        const presentCount = sessionAttendance.filter(record => (record.status_c || record.status) === "present").length
+        const absentCount = sessionAttendance.filter(record => (record.status_c || record.status) === "absent").length
+        const lateCount = sessionAttendance.filter(record => (record.status_c || record.status) === "late").length
         
         attendanceStats[session.Id] = {
           totalParticipants: sessionParticipants,

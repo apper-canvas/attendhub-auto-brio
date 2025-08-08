@@ -1,53 +1,192 @@
-import participantsData from "@/services/mockData/participants.json"
-
 class ParticipantsService {
   constructor() {
-    this.participants = [...participantsData]
+    // Initialize ApperClient for database operations
+    const { ApperClient } = window.ApperSDK
+    this.apperClient = new ApperClient({
+      apperProjectId: import.meta.env.VITE_APPER_PROJECT_ID,
+      apperPublicKey: import.meta.env.VITE_APPER_PUBLIC_KEY
+    })
+    this.tableName = "participant_c"
   }
 
   async getAll() {
-    // Simulate API delay
-    await new Promise(resolve => setTimeout(resolve, 250))
-    return [...this.participants]
+    try {
+      const params = {
+        fields: [
+          { field: { Name: "Name" } },
+          { field: { Name: "email_c" } },
+          { field: { Name: "department_c" } }
+        ],
+        pagingInfo: { limit: 1000, offset: 0 }
+      }
+
+      const response = await this.apperClient.fetchRecords(this.tableName, params)
+      
+      if (!response.success) {
+        console.error(response.message)
+        throw new Error(response.message)
+      }
+
+      return response.data || []
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        console.error("Error fetching participants:", error?.response?.data?.message)
+      } else {
+        console.error("Error fetching participants:", error.message)
+      }
+      return []
+    }
   }
 
   async getById(id) {
-    await new Promise(resolve => setTimeout(resolve, 200))
-    const participant = this.participants.find(p => p.Id === id)
-    if (!participant) {
-      throw new Error("Participant not found")
+    try {
+      const params = {
+        fields: [
+          { field: { Name: "Name" } },
+          { field: { Name: "email_c" } },
+          { field: { Name: "department_c" } }
+        ]
+      }
+
+      const response = await this.apperClient.getRecordById(this.tableName, id, params)
+      
+      if (!response.success) {
+        console.error(response.message)
+        throw new Error(response.message)
+      }
+
+      return response.data
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        console.error(`Error fetching participant with ID ${id}:`, error?.response?.data?.message)
+      } else {
+        console.error("Error fetching participant:", error.message)
+      }
+      return null
     }
-    return { ...participant }
   }
 
   async create(participantData) {
-    await new Promise(resolve => setTimeout(resolve, 400))
-    const newParticipant = {
-      Id: Math.max(...this.participants.map(p => p.Id)) + 1,
-      ...participantData
+    try {
+      const params = {
+        records: [{
+          Name: participantData.Name || participantData.name,
+          email_c: participantData.email_c || participantData.email,
+          department_c: participantData.department_c || participantData.department
+        }]
+      }
+
+      const response = await this.apperClient.createRecord(this.tableName, params)
+      
+      if (!response.success) {
+        console.error(response.message)
+        throw new Error(response.message)
+      }
+
+      if (response.results) {
+        const successfulRecords = response.results.filter(result => result.success)
+        const failedRecords = response.results.filter(result => !result.success)
+        
+        if (failedRecords.length > 0) {
+          console.error(`Failed to create participants ${failedRecords.length} records:${JSON.stringify(failedRecords)}`)
+          failedRecords.forEach(record => {
+            record.errors?.forEach(error => {
+              console.error(`${error.fieldLabel}: ${error.message}`)
+            })
+          })
+        }
+        
+        return successfulRecords.length > 0 ? successfulRecords[0].data : null
+      }
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        console.error("Error creating participant:", error?.response?.data?.message)
+      } else {
+        console.error("Error creating participant:", error.message)
+      }
+      throw error
     }
-    this.participants.push(newParticipant)
-    return { ...newParticipant }
   }
 
   async update(id, participantData) {
-    await new Promise(resolve => setTimeout(resolve, 350))
-    const index = this.participants.findIndex(p => p.Id === id)
-    if (index === -1) {
-      throw new Error("Participant not found")
+    try {
+      const params = {
+        records: [{
+          Id: parseInt(id),
+          Name: participantData.Name || participantData.name,
+          email_c: participantData.email_c || participantData.email,
+          department_c: participantData.department_c || participantData.department
+        }]
+      }
+
+      const response = await this.apperClient.updateRecord(this.tableName, params)
+      
+      if (!response.success) {
+        console.error(response.message)
+        throw new Error(response.message)
+      }
+
+      if (response.results) {
+        const successfulUpdates = response.results.filter(result => result.success)
+        const failedUpdates = response.results.filter(result => !result.success)
+        
+        if (failedUpdates.length > 0) {
+          console.error(`Failed to update participants ${failedUpdates.length} records:${JSON.stringify(failedUpdates)}`)
+          failedUpdates.forEach(record => {
+            record.errors?.forEach(error => {
+              console.error(`${error.fieldLabel}: ${error.message}`)
+            })
+          })
+        }
+        
+        return successfulUpdates.length > 0 ? successfulUpdates[0].data : null
+      }
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        console.error("Error updating participant:", error?.response?.data?.message)
+      } else {
+        console.error("Error updating participant:", error.message)
+      }
+      throw error
     }
-    this.participants[index] = { ...this.participants[index], ...participantData }
-    return { ...this.participants[index] }
   }
 
   async delete(id) {
-    await new Promise(resolve => setTimeout(resolve, 250))
-    const index = this.participants.findIndex(p => p.Id === id)
-    if (index === -1) {
-      throw new Error("Participant not found")
+    try {
+      const params = {
+        RecordIds: [parseInt(id)]
+      }
+
+      const response = await this.apperClient.deleteRecord(this.tableName, params)
+      
+      if (!response.success) {
+        console.error(response.message)
+        throw new Error(response.message)
+      }
+
+      if (response.results) {
+        const successfulDeletions = response.results.filter(result => result.success)
+        const failedDeletions = response.results.filter(result => !result.success)
+        
+        if (failedDeletions.length > 0) {
+          console.error(`Failed to delete participants ${failedDeletions.length} records:${JSON.stringify(failedDeletions)}`)
+          failedDeletions.forEach(record => {
+            if (record.message) console.error(record.message)
+          })
+        }
+        
+        return successfulDeletions.length > 0
+      }
+      
+      return false
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        console.error("Error deleting participant:", error?.response?.data?.message)
+      } else {
+        console.error("Error deleting participant:", error.message)
+      }
+      throw error
     }
-    this.participants.splice(index, 1)
-    return true
   }
 }
 

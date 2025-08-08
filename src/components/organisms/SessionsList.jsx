@@ -18,7 +18,7 @@ const SessionsList = () => {
   const [filterType, setFilterType] = useState("all")
   const [attendanceStats, setAttendanceStats] = useState({})
 
-  const loadData = async () => {
+const loadData = async () => {
     try {
       setLoading(true)
       setError("")

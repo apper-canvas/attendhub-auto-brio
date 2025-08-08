@@ -19,14 +19,14 @@ const SessionCard = ({ session, attendanceStats = {} }) => {
     <Card className="bg-gradient-to-br from-white to-blue-50 hover:from-white hover:to-blue-100 transform hover:scale-[1.02] transition-all duration-300">
       <div className="flex items-start justify-between mb-4">
         <div>
-          <h3 className="text-lg font-bold text-gray-900 mb-1">{session.name}</h3>
+<h3 className="text-lg font-bold text-gray-900 mb-1">{session.Name || session.name}</h3>
           <p className="text-sm text-gray-600 flex items-center">
             <ApperIcon name="Calendar" size={14} className="mr-1" />
-            {format(new Date(session.date), "MMM dd, yyyy")}
+            {format(new Date(session.date_c || session.date), "MMM dd, yyyy")}
           </p>
           <p className="text-sm text-gray-600 flex items-center mt-1">
             <ApperIcon name="Tag" size={14} className="mr-1" />
-            {session.type}
+            {session.type_c || session.type}
           </p>
         </div>
         <div className="text-right">
